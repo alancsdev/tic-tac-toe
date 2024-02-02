@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(47, 41, 41);
+}
+
+#board-game {
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#board-game span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.33%;
+  height: 33.33%;
+  flex-wrap: wrap;
+  color: #333;
+  font-size: 3rem;
+  border: 3px solid black;
+}
+
+#board-game span:hover {
+  background: #f6f6f6;
+  cursor: pointer;
+}
+
+#player {
+  font-size: 3rem;
+}
+
+.turn {
+  color: white;
+}
+
+.winner {
+  font-size: 3rem;
+  color: white;
+}
+
+.reset {
+  font-size: 2rem;
+  width: 12rem;
+  border-radius: 2rem;
+}
