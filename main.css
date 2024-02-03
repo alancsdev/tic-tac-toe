@@ -28,11 +28,11 @@ body {
   justify-content: center;
   align-items: center;
   width: 33.33%;
-  height: 33.33%;
+  height: 33.34%;
   flex-wrap: wrap;
   color: #333;
   font-size: 3rem;
-  border: 3px solid black;
+  border: 2px solid black;
 }
 
 #board-game span:hover {
@@ -43,44 +43,66 @@ body {
 .horizontal::after {
   content: '';
   display: block;
-  width: 15%;
+  width: 170px;
   height: 10px;
   background: black;
   position: absolute;
   z-index: 100;
+  animation: draw 1s ease;
+}
+
+@keyframes draw {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 180px;
+  }
 }
 
 .vertical::after {
   content: '';
   display: block;
-  width: 15%;
+  width: 170px;
   height: 10px;
   background: black;
   position: absolute;
   z-index: 100;
   rotate: 90deg;
+  animation: draw 1s ease;
 }
 
 .diagonal1:after {
   content: '';
   display: block;
-  width: 22%;
+  width: 240px;
   height: 10px;
   background: black;
   position: absolute;
   z-index: 100;
   rotate: 45deg;
+  animation: drawD 1s ease;
 }
 
 .diagonal2::after {
   content: '';
   display: block;
-  width: 22%;
+  width: 250px;
   height: 10px;
   background: black;
   position: absolute;
   z-index: 100;
   rotate: 135deg;
+  animation: drawD 1s ease;
+}
+
+@keyframes drawD {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 250px;
+  }
 }
 
 #player {
@@ -100,4 +122,5 @@ body {
   font-size: 2rem;
   width: 12rem;
   border-radius: 2rem;
+  cursor: pointer;
 }
