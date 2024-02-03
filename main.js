@@ -144,4 +144,24 @@ drawLine = () => {
   console.log(index);
 };
 
+//Draw and delete the player with mouse over
+
+for (let i = 0; i < spanEl.length; i++) {
+  spanEl[i].addEventListener('mouseover', () => {
+    if (spanEl[i].innerText === '') {
+      if (player === 'X') {
+        spanEl[i].textContent = '❌';
+      }
+      if (player === 'O') {
+        spanEl[i].textContent = '⭕️';
+      }
+    }
+  });
+  spanEl[i].addEventListener('mouseout', () => {
+    if (board[i] === null) {
+      spanEl[i].textContent = '';
+    }
+  });
+}
+
 render();
