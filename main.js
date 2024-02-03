@@ -27,6 +27,7 @@ let hasAWinner = false;
 let plays = 0;
 
 const spanEl = Array.from(document.querySelectorAll('span'));
+const spanElDraw = document.querySelectorAll('span');
 
 render = () => {
   spanEl.map((el, index) => {
@@ -65,15 +66,19 @@ clickedPosition = (index) => {
   }
 };
 
+let combinations;
+
 checkWinner = () => {
-  for (let combinations of winningCombinations) {
+  for (combinations of winningCombinations) {
     if (
       board[combinations[0]] === 'X' &&
       board[combinations[1]] === 'X' &&
       board[combinations[2]] === 'X'
     ) {
+      drawLine();
       hasAWinner = true;
       showWinner.textContent = 'Winner: ❌';
+      //console.log(combinations);
     } else if (
       board[combinations[0]] === 'O' &&
       board[combinations[1]] === 'O' &&
@@ -81,6 +86,7 @@ checkWinner = () => {
     ) {
       hasAWinner = true;
       showWinner.textContent = 'Winner: ⭕️';
+      drawLine();
     }
   }
   console.log(board);
@@ -92,6 +98,7 @@ buttonReset.addEventListener('click', () => {
   for (let i = 0; i < board.length; i++) {
     board[i] = null;
     spanEl[i].textContent = '';
+    spanEl[i].classList = '';
   }
   playerScreen.textContent = '❌';
   plays = 0;
@@ -99,5 +106,42 @@ buttonReset.addEventListener('click', () => {
   hasAWinner = false;
   console.log(board);
 });
+
+drawLine = () => {
+  function isArrayEqual(array1, array2) {
+    return (
+      array1.length === array2.length &&
+      array1.every((element, index) => element === array2[index])
+    );
+  }
+  let index = -1;
+  console.log(combinations);
+  for (let i = 0; i < winningCombinations.length; i++) {
+    if (isArrayEqual(combinations, winningCombinations[i])) {
+      index = i;
+      break;
+    }
+  }
+
+  if (index < 3) {
+    for (let i = 0; i < 3; i++) {
+      spanEl[combinations[i]].classList.add('horizontal');
+    }
+  } else if (index < 6) {
+    for (let i = 0; i < 3; i++) {
+      spanEl[combinations[i]].classList.add('vertical');
+    }
+  } else if (index < 7) {
+    for (let i = 0; i < 3; i++) {
+      spanEl[combinations[i]].classList.add('diagonal1');
+    }
+  } else if (index < 8) {
+    for (let i = 0; i < 3; i++) {
+      spanEl[combinations[i]].classList.add('diagonal2');
+    }
+  }
+
+  console.log(index);
+};
 
 render();

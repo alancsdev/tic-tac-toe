@@ -23,7 +23,7 @@ body {
   flex-wrap: wrap;
 }
 
-#board-game span {
+#board-game > span {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,6 +38,49 @@ body {
 #board-game span:hover {
   background: #f6f6f6;
   cursor: pointer;
+}
+
+.horizontal::after {
+  content: '';
+  display: block;
+  width: 15%;
+  height: 10px;
+  background: black;
+  position: absolute;
+  z-index: 100;
+}
+
+.vertical::after {
+  content: '';
+  display: block;
+  width: 15%;
+  height: 10px;
+  background: black;
+  position: absolute;
+  z-index: 100;
+  rotate: 90deg;
+}
+
+.diagonal1:after {
+  content: '';
+  display: block;
+  width: 22%;
+  height: 10px;
+  background: black;
+  position: absolute;
+  z-index: 100;
+  rotate: 45deg;
+}
+
+.diagonal2::after {
+  content: '';
+  display: block;
+  width: 22%;
+  height: 10px;
+  background: black;
+  position: absolute;
+  z-index: 100;
+  rotate: 135deg;
 }
 
 #player {
